@@ -9,7 +9,10 @@ print("Language Model Loaded!")
 
 # Load the dataframe
 df = pd.read_csv("sample.csv")
-print("Dataframe Monitored!")
+print("Data Loaded!")
+
+# Initialise the list of domains to scan
+suspicious_domains = []
 
 # Break each domain up into its components (domain, tld)
 domain_names_clean = [i.partition(".")[0:2:2] for i in df["domainName"]]
@@ -27,11 +30,10 @@ for i, domain_name in enumerate(domain_names_clean):
     # Check if similarity exceeds the threshold
     if float(similarity_with_an_post[0][0]) > 0.4:
         print(f"Domain: {domain_name} \nSimilarity: {similarity_with_an_post[0][0]}")
-        # analyse_site(domain_name)
+        suspicious_domains.append(domain_name)
     
     # Print progress for every 1000 domains processed
     if i % 1000 == 0:
         print(f"Number of Domains processed: {i}")
 
-
-
+print(f"Suspicious Domains: {suspicious_domains}")

@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 
 def check_imitation(domain_portions:list[2]) -> bool:
-    
     """Checks if a site is imitation"""
     domain_to_check = f"https://www.{domain_portions[0]}.{domain_portions[1]}/"
 

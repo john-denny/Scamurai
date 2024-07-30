@@ -1,11 +1,25 @@
 import cv2
 import numpy as np
+from PIL import Image
+import cairo
+import io
 
-def histogram_similarity(image1, image2):
+def histogram_similarity(target_image: str, preproccessed_image):
     # TODO BUILD IN IMAGE CONVERSION E.G SVG -> JPG
+    if target_image.endswith(".svg"):
+        png_data = cairo.svg2png(url=target_image)
+        # Read the PNG image from the data
+        image = Image.open(io.BytesIO(png_data))
+        image = np.array(image)
+        # Convert RGBA to RGB if needed
+        if image.shape[2] == 4:
+            image = cv2.cvtColor(image, cv2.COLOR_RGBA2RGB)
+    else:
+        image = cv2.imread(target_image)
+    preproccessed_image
     # Load and split the images into R, G, B channels
-    b1, g1, r1 = cv2.split(image1)
-    b2, g2, r2 = cv2.split(image2)
+    b1, g1, r1 = cv2.split(image)
+    b2, g2, r2 = cv2.split(preproccessed_image)
     
     # Calculate histograms for each channel
     hist_b1 = cv2.calcHist([b1], [0], None, [256], [0, 256])
@@ -35,10 +49,6 @@ def histogram_similarity(image1, image2):
     return similarity
 
 # Example usage
-image1 = cv2.imread('an-post-logo.jpg')
 
-image2 = cv2.imread('images.png')
-
-
-similarity = histogram_similarity(image1, image2)
+similarity = histogram_similarity("logo1.svg", "an-post-logo.jpg")
 print(f"Similarity: {similarity:.2f}")
