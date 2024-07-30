@@ -1,15 +1,15 @@
 import cv2
 import numpy as np
 from PIL import Image
-import cairo
+import cairosvg
 import io
 
 def histogram_similarity(target_image: str, preproccessed_image):
     # TODO BUILD IN IMAGE CONVERSION E.G SVG -> JPG
     if target_image.endswith(".svg"):
-        png_data = cairo.svg2png(url=target_image)
+        cairosvg.svg2png(url=target_image, write_to="bingchilling-laoganma.svg")
         # Read the PNG image from the data
-        image = Image.open(io.BytesIO(png_data))
+        image = Image.open("bingchilling-laoganma.svg")
         image = np.array(image)
         # Convert RGBA to RGB if needed
         if image.shape[2] == 4:
