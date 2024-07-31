@@ -54,5 +54,5 @@ def histogram_similarity(target_image: str, preproccessed_image):
 
 # Example usage
 
-similarity = histogram_similarity("logo1.svg", "an-post-logo.jpg")
+similarity = histogram_similarity("logo1.svg", "example.png")
 print(f"Similarity: {similarity:.2f}")
