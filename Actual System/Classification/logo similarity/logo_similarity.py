@@ -7,18 +7,22 @@ import io
 def histogram_similarity(target_image: str, preproccessed_image):
     # TODO BUILD IN IMAGE CONVERSION E.G SVG -> JPG
     if target_image.endswith(".svg"):
-        cairosvg.svg2png(url=target_image, write_to="bingchilling-laoganma.svg")
+        cairosvg.svg2png(url=target_image, write_to="bingchilling-laoganma.png")
         # Read the PNG image from the data
-        image = Image.open("bingchilling-laoganma.svg")
-        image = np.array(image)
-        # Convert RGBA to RGB if needed
-        if image.shape[2] == 4:
-            image = cv2.cvtColor(image, cv2.COLOR_RGBA2RGB)
+        image = Image.open("bingchilling-laoganma.png")
+
+        if image.mode == 'RGBA':
+            
+            image = image.convert('RGB')
+            image = np.array(image)
+            print("Converted from RGBA to RGB")
     else:
         image = cv2.imread(target_image)
-    preproccessed_image
+        image = np.array(image)
+    
     # Load and split the images into R, G, B channels
     b1, g1, r1 = cv2.split(image)
+    preproccessed_image = np.array(cv2.imread(preproccessed_image))
     b2, g2, r2 = cv2.split(preproccessed_image)
     
     # Calculate histograms for each channel
