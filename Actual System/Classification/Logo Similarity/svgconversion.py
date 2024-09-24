@@ -16,6 +16,6 @@ def svg_to_png(svg_path, png_path, output_width=None, output_height=None):
     print(f"Converted {svg_path} to {png_path}")
 
 # Example usage
-svg_path = 'logo-1.svg'
+svg_path = 'logo1.svg'
 png_path = 'example.png'
 svg_to_png(svg_path, png_path, output_width=800, output_height=600)

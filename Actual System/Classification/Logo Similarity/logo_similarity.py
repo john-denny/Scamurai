@@ -5,7 +5,7 @@ import cairosvg
 import io
 
 def histogram_similarity(target_image: str, preproccessed_image):
-    # TODO BUILD IN IMAGE CONVERSION E.G SVG -> JPG
+    
     if target_image.endswith(".svg"):
         cairosvg.svg2png(url=target_image, write_to="bingchilling-laoganma.png")
         # Read the PNG image from the data
@@ -54,5 +54,5 @@ def histogram_similarity(target_image: str, preproccessed_image):
 
 # Example usage
 
-similarity = histogram_similarity("logo1.svg", "example.png")
+similarity = histogram_similarity("logo1.svg", "bingchilling-laoganma.png")
 print(f"Similarity: {similarity:.2f}")
