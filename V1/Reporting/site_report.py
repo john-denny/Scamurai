@@ -92,8 +92,8 @@ def format_report(report):
     return "\n".join(report_text)
 
 # Example usage
-url = "https://www.bish.ie/"
-domain = "bish.ie"
+url = "https://www.google.ie/"
+domain = "google.ie"
 report = generate_report(domain, url)
 report_text = format_report(report)
 print(report_text)
