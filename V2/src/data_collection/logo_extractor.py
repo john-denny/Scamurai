@@ -30,17 +30,3 @@ def extract_images_from_webpage(url):
     except requests.exceptions.RequestException as e:
         print(f"Error extracting images from {url}: {e}")
         return []
-
-def extract_logo_from_webpage(url):
-    images = extract_images_from_webpage(url)
-    
-    # Look for common logo classes or IDs
-    logo_keywords = ['logo', 'brand', 'company', 'site-logo']
-    
-    for image in images:
-        for keyword in logo_keywords:
-            if keyword in str(image).lower():
-                return image
-    
-    # If no logo is found, return the first image (if any)
-    return images[0] if images else None

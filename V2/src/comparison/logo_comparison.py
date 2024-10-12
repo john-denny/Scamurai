@@ -5,7 +5,7 @@ def compare_logos(extracted_logos_dir, profile_logo_directory, threshold=0.7):
     if not os.path.isdir(extracted_logos_dir) or not os.path.isdir(profile_logo_directory):
         return None
     
-    matching_logos = []
+    suspicious_logos = {}
     
     for extracted_logo in os.listdir(extracted_logos_dir):
         extracted_logo_path = os.path.join(extracted_logos_dir, extracted_logo)
@@ -18,8 +18,8 @@ def compare_logos(extracted_logos_dir, profile_logo_directory, threshold=0.7):
                 max_similarity = max(max_similarity, similarity)
         
         if max_similarity >= threshold:
-            matching_logos.append(extracted_logo_path)
+            suspicious_logos[extracted_logo_path] = max_similarity
         else:
             os.remove(extracted_logo_path)
     
-    return matching_logos if matching_logos else None
+    return suspicious_logos if suspicious_logos else None

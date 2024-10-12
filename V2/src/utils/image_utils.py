@@ -11,10 +11,7 @@ def download_image(url):
         response.raise_for_status()
         
         content_type = response.headers.get('Content-Type', '')
-        if not content_type.startswith('image/'):
-            print(f"Warning: URL does not point to an image: {url}")
-            return None
-
+        
         img = Image.open(io.BytesIO(response.content))
         return img
     except requests.RequestException as e:
@@ -88,6 +85,8 @@ def compare_images(img1_path, img2_path):
     return similarity
 
 def extract_dominant_color(image, num_colors=1):
+    if image is None:
+        return None
     image = image.convert('RGB')
     image = image.resize((100, 100))
     pixels = list(image.getdata())
@@ -103,6 +102,9 @@ def extract_dominant_color(image, num_colors=1):
     return [color for color, _ in sorted_colors[:num_colors]]
 
 def save_image(image, filepath):
+    if image is None:
+        print(f"Cannot save image to {filepath}: Image is None")
+        return
     try:
         image.save(filepath)
         print(f"Image saved successfully to {filepath}")
