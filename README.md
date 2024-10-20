@@ -8,7 +8,8 @@ A multi-factor method of detecting phishing and brand impersonation sites, then 
 - Logo comparison - Compares Logos which appear on a site to those of a site's profile
 
 ## Profile Generation
-- Profiles can be found in `/src/config/company_profiles.py` and you can add to them
+- Profiles can be found in `/src/config/company_profiles.py`
+- Then add logos and images to the logos directory which you specify
 
 # Dependencies & Setup
 - Use pip to install the requirements file
