@@ -14,7 +14,7 @@ A multi-factor method of detecting phishing and brand impersonation sites, then 
 # Dependencies & Setup
 - Use pip to install the requirements file
 - [CairoSVG is used for scraped SVGs from sites for logo similarity & comparison](https://cairosvg.org/)
-
+  - CairoSVG has dependencies which may depend on your Operating System. On Ubuntu Install `libcairo2 python3-dev libffi-dev ffmpeg libsm6 libxext6 ` using the apt.
 
 ## Trelis
 Built as part of a [Trelis Grant](https://trelis.com/trelis-ai-grants/)
