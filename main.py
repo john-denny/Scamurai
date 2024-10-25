@@ -26,7 +26,7 @@ def analyze_website(url, company_profile):
     domain = url.split('//')[-1].split('/')[0]
     analyzed_domain = analyze_domain(domain)
     domain_similarities = compare_domains(analyzed_domain, company_profile['domains']) 
-    compare_domains(analyzed_domain, company_profile['description']))
+    compare_domains(analyzed_domain, company_profile['description'])
     
     # Extract and compare logo
     extracted_logos = extract_images_from_webpage(url)
